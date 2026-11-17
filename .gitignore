@@ -1,0 +1,4 @@
+build/
+bgs/
+*.keystore
+*.jks

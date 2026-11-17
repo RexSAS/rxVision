@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- How many menus share the blur behind them (see Blur). -->
+    <item name="blur_count" type="id" />
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Launcher" parent="android:Theme.Material.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:windowShowWallpaper">false</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Activity</item>
+        <item name="accent">#FFFF3B3B</item>
+    </style>
+
+    <!-- Red to match the Ghost wallpaper. -->
+    <style name="Theme.Launcher.Ghost" />
+
+    <!-- Amber from the black hole's accretion disk. -->
+    <style name="Theme.Launcher.BlackHole">
+        <item name="accent">#FFFFB347</item>
+    </style>
+    <style name="Theme.Launcher.Moon">
+        <item name="accent">#FF8FB8E8</item>
+    </style>
+
+    <!-- Peach from the sunset haze. -->
+    <style name="Theme.Launcher.Dusk">
+        <item name="accent">#FFF2B48A</item>
+    </style>
+
+    <style name="Theme.Launcher.Summit">
+        <item name="accent">#FF6FCFBE</item>
+    </style>
+
+    <!-- Tokyo Tower orange. -->
+    <style name="Theme.Launcher.Tokyo">
+        <item name="accent">#FFFF6A3D</item>
+    </style>
+
+    <!-- The Charger's tail-light crimson. -->
+    <style name="Theme.Launcher.Charger">
+        <item name="accent">#FFE8202F</item>
+    </style>
+
+    <!-- Pale gold, from the leopard's eyes. -->
+    <style name="Theme.Launcher.Leopard">
+        <item name="accent">#FFE8C77A</item>
+    </style>
+
+    <!-- Mint from the moonlit peak. -->
+    <style name="Theme.Launcher.NightPeak">
+        <item name="accent">#FF3EF0C8</item>
+    </style>
+
+    <!-- Bronze, to warm up the grey armour. -->
+    <style name="Theme.Launcher.Knight">
+        <item name="accent">#FFC08A4F</item>
+    </style>
+</resources>

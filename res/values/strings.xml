@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Home</string>
+    <string name="a11y_label">Home button</string>
+    <string name="a11y_desc">Opens this launcher when the remote\'s Home button, or the TV remote\'s red button, is pressed.</string>
+</resources>
