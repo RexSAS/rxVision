@@ -213,6 +213,8 @@ public class MainActivity extends Activity {
     private boolean asleep;
     /** The TV panel takes a moment to show the HDMI picture after waking; don't play to a dark screen. */
     static final long WAKE_DELAY = 1200;
+    /** A launcher started this soon after boot is the stick powering up: it opens on the logo. */
+    private static final long BOOT_SPLASH_MS = 3 * 60_000;
     /** Dark pause before the logo draws, after the screen comes on. */
     static final long SPLASH_DELAY = 1000;
 
@@ -295,8 +297,9 @@ public class MainActivity extends Activity {
         sleepWarning = sleepWarning();
         root.addView(sleepWarning, match());
 
-        // A fresh start (not a theme change, which recreates with saved state) opens on the logo.
-        if (state == null) {
+        // A fresh start right after boot opens on the logo. Not a theme change (recreates with saved state), and
+        // not a restart later on (Fire OS kills the launcher behind big apps like Spotify; back Home it's just the intro).
+        if (state == null && SystemClock.elapsedRealtime() < BOOT_SPLASH_MS) {
             showSplash();
             splash.post(() -> startSplash(this::maybePlayIntro));
         }
@@ -480,8 +483,12 @@ public class MainActivity extends Activity {
     }
 
     private Typeface font(String asset, int weight) {
-        if (Build.VERSION.SDK_INT < 26) return Typeface.createFromAsset(getAssets(), asset);
-        return new Typeface.Builder(getAssets(), asset)
+        return font(this, asset, weight);
+    }
+
+    static Typeface font(Context c, String asset, int weight) {
+        if (Build.VERSION.SDK_INT < 26) return Typeface.createFromAsset(c.getAssets(), asset);
+        return new Typeface.Builder(c.getAssets(), asset)
             .setFontVariationSettings("'wght' " + weight).build();
     }
 

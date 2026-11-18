@@ -45,13 +45,17 @@ final class Splash extends View {
         word.setShadowLayer(10 * dp, 0, 0, 0x66000000);
     }
 
+    static final long DRAW_MS = 1700;
     private boolean played;
 
-    /** After `delay`, runs the drawing, then fades and lifts the logo away and calls done once it's gone. */
+    /**
+     * After `delay`, runs the drawing, then fades and lifts the logo away and calls done once it's gone.
+     * done null: the logo stays, for whoever holds it to take away.
+     */
     void play(long delay, Runnable done) {
         if (played) return;
         played = true;
-        ValueAnimator draw = ValueAnimator.ofFloat(0f, 1f).setDuration(1700);
+        ValueAnimator draw = ValueAnimator.ofFloat(0f, 1f).setDuration(DRAW_MS);
         draw.setStartDelay(delay);
         draw.setInterpolator(new LinearInterpolator()); // each part eases itself below
         draw.addUpdateListener(a -> {
@@ -60,6 +64,7 @@ final class Splash extends View {
         });
         draw.addListener(new android.animation.AnimatorListenerAdapter() {
             @Override public void onAnimationEnd(android.animation.Animator a) {
+                if (done == null) return;
                 animate().alpha(0f).scaleX(1.08f).scaleY(1.08f).setStartDelay(250).setDuration(650)
                     .withEndAction(() -> {
                         ((ViewGroup) getParent()).removeView(Splash.this);
